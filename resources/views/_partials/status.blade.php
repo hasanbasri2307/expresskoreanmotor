@@ -1,0 +1,1 @@
+<span class="label label-{{ $params['css_class'] }}">{{ $params['message'] }}</span>
