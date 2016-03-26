@@ -2,134 +2,91 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Meta, title, CSS, favicons, etc. -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ $title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <!-- Bootstrap core CSS -->
+    <title>Admin Login - Express Korean Motor</title>
 
-  <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
-  <link href="{{ asset('assets/fonts/css/font-awesome.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/animate.min.css') }}" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('assets/bower_components/metisMenu/dist/metisMenu.min.css') }}" rel="stylesheet">
 
-  <!-- Custom styling plus plugins -->
-  <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/icheck/flat/green.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('assets/dist/css/sb-admin-2.css') }}" rel="stylesheet">
 
+    <!-- Custom Fonts -->
+    <link href="{{ asset('assets/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
-  <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-
-  <!--[if lt IE 9]>
-        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
-        <![endif]-->
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
-<body style="background:#F7F7F7;">
+<body>
 
-  <div class="">
-    <a class="hiddenanchor" id="toregister"></a>
-    <a class="hiddenanchor" id="tologin"></a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+                </div>
+                <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div role="alert" class="alert alert-danger alert-dismissible fade in">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
 
-    <div id="wrapper">
-      <div id="login" class="animate form">
-        <section class="login_content">
-        {!! Form::open(array('url'=>'login/verify','method'=>'post')) !!}
-         
-            <h1>Login Form</h1>
-            @if (count($errors) > 0)
-                <div role="alert" class="alert alert-danger alert-dismissible fade in">
-                    @foreach ($errors->all() as $error)
-                        <p>{{ $error }}</p>
-                    @endforeach
-                </div>    
-            @endif
-            
-            @if(Session::has('error'))
-                <div role="alert" class="alert alert-danger alert-dismissible fade in">
-                    {{ Session::get('error') }}
-                </div>   
-            @endif
-            <div>
-              {!! Form::email('email', old('email'),['class'=>'form-control','placeholder'=>'email']) !!}
-              
-            </div>
-            <div>
-              {!! Form::password('password',['class'=>'form-control','placeholder'=>'Password']) !!}
-             
-            </div>
-            <div>
-              {!! Form::submit('Log in',['class'=>'btn btn-default submit']) !!}
-              
-              <a class="reset_pass" href="#">Lost your password?</a>
-            </div>
-            <div class="clearfix"></div>
-            <div class="separator">
+                    @if(Session::has('error'))
+                        <div role="alert" class="alert alert-danger alert-dismissible fade in">
+                            {{ Session::get('error') }}
+                        </div>
+                    @endif
+                    {!! Form::open(array('url'=>'login/verify','method'=>'post')) !!}
+                        <fieldset>
+                            <div class="form-group">
+                                {!! Form::email('email', old('email'),['class'=>'form-control','placeholder'=>'email']) !!}
 
-              <p class="change_link">New to site?
-                <a href="#toregister" class="to_register"> Create Account </a>
-              </p>
-              <div class="clearfix"></div>
-              <br />
-              <div>
-                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Gentelella Alela!</h1>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::password('password',['class'=>'form-control','placeholder'=>'Password']) !!}
+                            </div>
 
-                <p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-              </div>
-            </div>
-          </form>
-          <!-- form -->
-        </section>
-        <!-- content -->
-      </div>
-      <div id="register" class="animate form">
-        <section class="login_content">
-          <form>
-            <h1>Create Account</h1>
-            <div>
-              <input type="text" class="form-control" placeholder="Username" required="" />
-            </div>
-            <div>
-              <input type="email" class="form-control" placeholder="Email" required="" />
-            </div>
-            <div>
-              <input type="password" class="form-control" placeholder="Password" required="" />
-            </div>
-            <div>
-              <a class="btn btn-default submit" href="index.html">Submit</a>
-            </div>
-            <div class="clearfix"></div>
-            <div class="separator">
+                            <!-- Change this to a button or input when using this as a form -->
+                            {!! Form::submit('Log in',['class'=>'btn btn-lg btn-success btn-block']) !!}
 
-              <p class="change_link">Already a member ?
-                <a href="#tologin" class="to_register"> Log in </a>
-              </p>
-              <div class="clearfix"></div>
-              <br />
-              <div>
-                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Gentelella Alela!</h1>
-
-                <p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-              </div>
+                        </fieldset>
+                   </form>
+                </div>
             </div>
-          </form>
-          <!-- form -->
-        </section>
-        <!-- content -->
-      </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<!-- jQuery -->
+<script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="{{ asset('assets/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="{{ asset('assets/dist/js/sb-admin-2.js') }}"></script>
 
 </body>
 

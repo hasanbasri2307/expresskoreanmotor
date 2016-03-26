@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     //
+	private static $_data;
 
     public function dashboard(){
-    	return view('_partials.home');
+		self::$_data['title'] = "Dashboard";
+    	return view('_partials.home',self::$_data);
     }
 }

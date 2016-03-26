@@ -13,7 +13,7 @@ class CategoryRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class CategoryRequest extends Request
     {
         return [
             //
+			"cat_name" => "required",
+			"is_show" => "required"
         ];
     }
 }

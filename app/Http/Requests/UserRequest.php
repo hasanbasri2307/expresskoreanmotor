@@ -13,7 +13,7 @@ class UserRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,25 @@ class UserRequest extends Request
      */
     public function rules()
     {
-        return [
-            //
-        ];
+		switch ($this->method()) {
+			case 'POST':
+				return [
+					//
+					'u_name' => 'required',
+					'email' => 'required|email|unique:users,email',
+					'password' => 'required',
+					'status' => 'required'
+				];
+				break;
+
+			case 'PUT':
+				return [
+					"u_name"=>"required",
+					"status" => "required"
+				];
+
+				break;
+		}
+
     }
 }

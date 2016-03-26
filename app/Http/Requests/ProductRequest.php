@@ -13,7 +13,7 @@ class ProductRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,17 @@ class ProductRequest extends Request
      */
     public function rules()
     {
+
         return [
             //
+			"p_name" => "required",
+			"price" => "required|numeric",
+			"description" => "required",
+			"is_available" => "required",
+			"is_show" => "required",
+			"cat_id" => "required",
+			'picture.*' => 'required|image|mimes:jpg,jpeg,png|max:1024'
+
         ];
     }
 }

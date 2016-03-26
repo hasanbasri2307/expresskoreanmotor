@@ -2,252 +2,149 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Meta, title, CSS, favicons, etc. -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>@yield('title')</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <!-- Bootstrap core CSS -->
+    <title>{{ $title }}</title>
 
-  <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
-  <link href="{{ asset('assets/fonts/css/font-awesome.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/animate.min.css') }}" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('assets/bower_components/metisMenu/dist/metisMenu.min.css') }}" rel="stylesheet">
 
-  <!-- Custom styling plus plugins -->
-  <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/maps/jquery-jvectormap-2.0.3.css') }}" />
-  <link href="{{ asset('assets/css/icheck/flat/green.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/floatexamples.css') }}" rel="stylesheet" />
+    <!-- Timeline CSS -->
+    <link href="{{ asset('assets/dist/css/timeline.css') }}" rel="stylesheet">
 
-  @yield("custom_css")
-  <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    @yield("custom_css")
 
-  <!--[if lt IE 9]>
-        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
-        <![endif]-->
+    <!-- Custom CSS -->
+    <link href="{{ asset('assets/dist/css/sb-admin-2.css') }}" rel="stylesheet">
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <!-- Morris Charts CSS -->
+    <link href="{{ asset('assets/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
+
+
+
+    <!-- Custom Fonts -->
+    <link href="{{ asset('assets/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
+<body>
 
-<body class="nav-md">
+<div id="wrapper">
 
-  <div class="container body">
-
-
-    <div class="main_container">
-
-      <div class="col-md-3 left_col">
-        <div class="left_col scroll-view">
-
-          <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ route('home') }}" class="site_title"><i class="fa fa-paw"></i> <span>Express Korean Motor</span></a>
-          </div>
-          <div class="clearfix"></div>
-
-
-          <!-- menu prile quick info -->
-          <div class="profile">
-            <div class="profile_pic">
-              <img src="{{ asset('assets/images/man-icon.png') }}" alt="..." class="img-circle profile_img">
-            </div>
-            <div class="profile_info">
-              <span>Welcome,</span>
-              <h2>{{ Auth::user()->u_name }}</h2>
-            </div>
-          </div>
-          <!-- /menu prile quick info -->
-
-          <br />
-
-          <!-- sidebar menu -->
-          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-
-            <div class="menu_section">
-              <h3>Menu</h3>
-              <ul class="nav side-menu">
-                <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home </a>
-                 
-                </li>
-                <li><a><i class="fa fa-edit"></i> Master Data <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href="{{ route('product.list') }}">Products</a>
-                    </li>
-                    <li><a href="{{ route('user.list') }}">Users</a>
-                    </li>
-                    <li><a href="{{ route('category.list') }}">Categories</a>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="{{ route('order.list') }}"><i class="fa fa-desktop"></i> Orders </a>
-                  
-                </li>
-                
-              </ul>
-            </div>
-
-          </div>
-          <!-- /sidebar menu -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ route('home') }}">Express Korean Motor CMS v1</a>
         </div>
-      </div>
+        <!-- /.navbar-header -->
 
-      <!-- top navigation -->
-      <div class="top_nav">
-
-        <div class="nav_menu">
-          <nav class="" role="navigation">
-            <div class="nav toggle">
-             
-            </div>
-
-            <ul class="nav navbar-nav navbar-right">
-              <li class="">
-                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="{{ asset('assets/images/man-icon.png') }}" alt="">{{ Auth::user()->u_name }}
-                  <span class=" fa fa-angle-down"></span>
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
-                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                  <li><a href="javascript:;">  Profile</a>
-                  </li>
-                  
-                  <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                  </li>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile ({{ Auth::user()->u_name }}</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
                 </ul>
-              </li>
-            </ul>
-          </nav>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <?php
+            $path = Route::getCurrentRoute()->getPath();
+            $explode = explode('/',$path);
+
+        ?>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+
+                    <li>
+                        <a href="{{ route('home') }}" @if($explode[1] == "home") class="active" @endif><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                    </li>
+                    <li @if(isset($explode[1])) @if($explode[1] == "master") class="active" @endif @endif>
+                        <a href="#"><i class="fa fa-edit fa-fw"></i> Master Data<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse @if(isset($explode[1])) @if($explode[1] == "master") in @endif @endif ">
+                            <li>
+                                <a href="{{ route('user.list') }}" @if(isset($explode[2])) @if($explode[2] == "user") class="active" @endif @endif>Users</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('category.list') }}" @if(isset($explode[2])) @if($explode[2] == "category") class="active" @endif @endif>Categories</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('product.list') }}" @if(isset($explode[2])) @if($explode[2] == "product") class="active" @endif @endif>Products</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li @if(isset($explode[2])) @if($explode[2] == "order") class="active" @endif @endif>
+                        <a href="{{ route('order.list') }}"><i class="fa fa-table fa-fw"></i> Orders</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
         </div>
+        <!-- /.navbar-static-side -->
+    </nav>
 
-      </div>
-      <!-- /top navigation -->
-
-
-      <!-- page content -->
-      <div class="right_col" role="main">
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ $title }}</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
 
         @yield("content")
-
-        <!-- footer content -->
-        <footer>
-          <div class="copyright-info">
-            <p class="pull-right">Express Korean Motor Created By Hasan Basri</a>    
-            </p>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-
-      </div>
-      <!-- /page content -->
     </div>
+    <!-- /#page-wrapper -->
 
+</div>
+<!-- /#wrapper -->
 
-  </div>
+<!-- jQuery -->
+<script src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
-  <div id="custom_notifications" class="custom-notifications dsp_none">
-    <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
-    </ul>
-    <div class="clearfix"></div>
-    <div id="notif-group" class="tabbed_notifications"></div>
-  </div>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
-  <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/js/nicescroll/jquery.nicescroll.min.js') }}"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="{{ asset('assets/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
 
-  <!-- icheck -->
-  <script src="{{ asset('assets/js/icheck/icheck.min.js') }}"></script>
+<!-- Morris Charts JavaScript -->
 
+@yield("custom_js")
+<!-- Custom Theme JavaScript -->
+<script src="{{ asset('assets/dist/js/sb-admin-2.js') }}"></script>
 
-  @yield("custom_js")
-  <script src="{{ asset('assets/js/custom.js') }}"></script>
-
-  <!-- flot js -->
-  <!--[if lte IE 8]><script type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
-  
-  <!-- -->
-  <!-- datepicker -->
-  <script type="text/javascript">
-    $(document).ready(function() {
-
-      var cb = function(start, end, label) {
-        console.log(start.toISOString(), end.toISOString(), label);
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        //alert("Callback has fired: [" + start.format('MMMM D, YYYY') + " to " + end.format('MMMM D, YYYY') + ", label = " + label + "]");
-      }
-
-      var optionSet1 = {
-        startDate: moment().subtract(29, 'days'),
-        endDate: moment(),
-        minDate: '01/01/2012',
-        maxDate: '12/31/2015',
-        dateLimit: {
-          days: 60
-        },
-        showDropdowns: true,
-        showWeekNumbers: true,
-        timePicker: false,
-        timePickerIncrement: 1,
-        timePicker12Hour: true,
-        ranges: {
-          'Today': [moment(), moment()],
-          'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month': [moment().startOf('month'), moment().endOf('month')],
-          'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        opens: 'left',
-        buttonClasses: ['btn btn-default'],
-        applyClass: 'btn-small btn-primary',
-        cancelClass: 'btn-small',
-        format: 'MM/DD/YYYY',
-        separator: ' to ',
-        locale: {
-          applyLabel: 'Submit',
-          cancelLabel: 'Clear',
-          fromLabel: 'From',
-          toLabel: 'To',
-          customRangeLabel: 'Custom',
-          daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-          monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-          firstDay: 1
-        }
-      };
-      $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-      $('#reportrange').daterangepicker(optionSet1, cb);
-      $('#reportrange').on('show.daterangepicker', function() {
-        console.log("show event fired");
-      });
-      $('#reportrange').on('hide.daterangepicker', function() {
-        console.log("hide event fired");
-      });
-      $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
-        console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
-      });
-      $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
-        console.log("cancel event fired");
-      });
-      $('#options1').click(function() {
-        $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
-      });
-      $('#options2').click(function() {
-        $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
-      });
-      $('#destroy').click(function() {
-        $('#reportrange').data('daterangepicker').remove();
-      });
-    });
-  </script>
-  <!-- /datepicker -->
 </body>
 
 </html>
