@@ -97,11 +97,18 @@
 @section("custom_js")
     <script>
         $(document).ready(function() {
-           $('#add_pict').on('click',function(){
-               var _input = '<div class="form-group">{!! Form::file('picture[]',['multiple'=> true]) !!}</div>';
-               $(_input).insertAfter('#pict_one');
+            var counts = 0;
+            $('#add_pict').on('click',function(){
+               if(counts >=  2){
+                   alert("Maximize 3 picture !!");
+               }else{
+                   var _input = '<div class="form-group">{!! Form::file('picture[]',['multiple'=> true]) !!}</div>';
+                   $(_input).insertAfter('#pict_one');
+                   counts++;
+               }
 
-           });
+            });
+
         });
     </script>
 @endsection

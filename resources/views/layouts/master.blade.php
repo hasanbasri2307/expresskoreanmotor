@@ -66,7 +66,7 @@
                     <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile ({{ Auth::user()->u_name }}</a>
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile ({{ Auth::user()->u_name }})</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -105,8 +105,11 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-                    <li @if(isset($explode[2])) @if($explode[2] == "order") class="active" @endif @endif>
-                        <a href="{{ route('order.list') }}"><i class="fa fa-table fa-fw"></i> Orders</a>
+                    <li>
+                        <a href="{{ route('order.list') }}" @if(isset($explode[1])) @if($explode[1] == "order") class="active" @endif @endif><i class="fa fa-table fa-fw"></i> Orders</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('contact.list') }}" @if(isset($explode[1])) @if($explode[1] == "contact") class="active" @endif @endif><i class="fa fa-desktop fa-fw"></i> Contact</a>
                     </li>
                 </ul>
             </div>

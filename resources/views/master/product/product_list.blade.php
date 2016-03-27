@@ -28,7 +28,6 @@
                                 <th>Discount</th>
                                 <th>Available ?</th>
                                 <th>Show ?</th>
-                                <th>Picture</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -43,8 +42,7 @@
                                     <td>{{ (!empty($item->discount)) ? number_format($item->discount).'%' : '0' }}</td>
                                     <td>{!! \Expresskoreanmotor\Libraries\Customlib::gen_product_available($item->is_available) !!}</td>
                                     <td>@if($item->is_show == 1) Showed @else Not Showed @endif</td>
-                                    <td><img src="{{ asset('uploaded/'.$item->pict_1) }}" height="150px" width="150px"> </td>
-                                    <td><a href="{{ route('product.edit',[$item->id]) }}" class="fa fa-edit"> Edit</a> &nbsp <a href="{{ route('product.delete',array($item['id'])) }}" data-method="delete" rel="nofollow"  data-token="{{ csrf_token() }}" class="fa fa-trash-o" id="delete_product"> Delete</a> </td>
+                                    <td><a href="{{ route('product.show',[$item->id]) }}" class="fa fa-search">Detail</a> &nbsp <a href="{{ route('product.edit',[$item->id]) }}" class="fa fa-edit"> Edit</a> &nbsp <a href="{{ route('product.delete',array($item['id'])) }}" data-method="delete" rel="nofollow"  data-token="{{ csrf_token() }}" class="fa fa-trash-o" id="delete_product"> Delete</a> </td>
                                 </tr>
                             @endforeach
                             </tbody>

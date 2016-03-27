@@ -43,7 +43,7 @@ class Customlib {
 
 				break;
 
-			case '2':
+			case '0':
 				$params = [];
 				$params['css_class'] = "warning";
 				$params['message'] = "Out Of Stock";
@@ -69,4 +69,33 @@ class Customlib {
 
 		return $result;
 	}
+
+	public static function gen_status_order($status)
+	{
+		$view = "";
+		switch ($status) {
+			case '0':
+				$params = [];
+				$params['css_class'] = "warning";
+				$params['message'] = "Need Process";
+				$view = view('_partials.status')->with('params', $params)->render();
+
+				break;
+
+			case '1':
+				$params = [];
+				$params['css_class'] = "success";
+				$params['message'] = "Done";
+				$view = view('_partials.status')->with('params', $params)->render();
+
+				break;
+
+			default:
+				# code...
+				break;
+		}
+
+		return $view;
+	}
+
 }

@@ -13,7 +13,17 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-
+	Route::get('/',['uses'=>'FrontController@index','as'=>'front.home']);
+	Route::get('product/show/{id}/{product_name}',['uses'=>'FrontController@product_show','as'=>'product.detail']);
+	Route::get('about-us',['uses'=>'FrontController@about','as'=>'front.about']);
+	Route::get('product',['uses'=>'FrontController@product','as'=>'front.product']);
+	Route::get('service',['uses'=>'FrontController@service','as'=>'front.service']);
+	Route::get('buy',['uses'=>'FrontController@buy','as'=>'front.buy']);
+	Route::get('contact',['uses'=>'FrontController@contact','as'=>'front.contact']);
+	Route::post('contact-post',['uses'=>'FrontController@contact_post','as'=>'contact.post']);
+	Route::post('product-post',['uses'=>'FrontController@product_post','as'=>'product.post']);
+	Route::get('product-search',['uses'=>'FrontController@product_search','as'=>'product.search']);
+	Route::get('products/category/{id}/{cat_name}',['uses'=>'FrontController@product_by_category','as'=>'front.product.category']);
 
     Route::get('login',['uses'=>'AuthenticateController@login','middleware'=>'guest']);
     Route::post('login/verify',['uses'=>'AuthenticateController@authCredentials','as'=>'login.verify']);
@@ -58,9 +68,12 @@ Route::group(['middleware' => ['web']], function () {
     	Route::get('order/add',['uses'=>'OrdersController@add','as'=>'order.add']);
     	Route::post('order/store',['uses'=>'OrdersController@store','as'=>'order.store']);
     	Route::get('order/edit/{id}',['uses'=>'OrdersController@edit','as'=>'order.edit']);
-    	Route::put('order/update/{id}',['uses'=>'OrdersController@update','as'=>'order.update']);
+    	Route::put('order/update',['uses'=>'OrdersController@update','as'=>'order.update']);
     	Route::get('order/show/{id}',['uses'=>'OrdersController@show','as'=>'order.show']);
     	Route::delete('order/delete/{id}',['uses'=>'OrdersController@delete','as'=>'order.delete']);
+
+		//Contact
+		Route::get('contact/list',['uses'=>'Contact@index','as'=>'contact.list']);
     });
 });
 
