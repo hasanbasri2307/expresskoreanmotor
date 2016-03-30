@@ -79,11 +79,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                {!! Form::open(array('route'=>'product.search','method'=>'get')) !!}
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                        <input type="text" placeholder="Search" name="keyword"/>
+                        <input type="hidden" name="submit" value="submit">
                     </div>
-                </div>
+                    {{ Form::close() }}
             </div>
         </div>
     </div><!--/header-bottom-->

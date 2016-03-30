@@ -30,6 +30,32 @@
             @endforeach
         </div><!--features_items-->
 
+        <div class="recommended_items"><!--recommended_items-->
+            <h2 class="title text-center">Testimonial</h2>
+            
+            <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="item active"> 
+                    @foreach($testimonial as $item)  
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        
+                                        <h2>{{ $item->perusahaan }}</h2>
+                                        <blockquote>{{ $item->isi }}</blockquote>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    </div>
+                    
+                </div>
+                 
+            </div>
+        </div><!--/recommended_items-->
 
         <div class="recommended_items"><!--recommended_items-->
             <h2 class="title text-center">Best Seller</h2>

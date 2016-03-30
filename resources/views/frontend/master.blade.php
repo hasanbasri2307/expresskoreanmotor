@@ -76,6 +76,7 @@
                             <li><a href="{{ route('front.service') }}" class="{{ (Route::is('front.service'))? 'active':'' }}">Our Service</a></li>
                             <li><a href="{{ route('front.buy') }}" class="{{ (Route::is('front.buy'))? 'active':'' }}">How to Buy</a></li>
                             <li><a href="{{ route('front.contact') }}" class="{{ (Route::is('front.contact'))? 'active':'' }}">Contact</a></li>
+                            <li><a href="{{ route('front.testimonial') }}" class="{{ (Route::is('front.testimonial'))? 'active':'' }}">Testimonial</a></li>
                         </ul>
                     </div>
                 </div>

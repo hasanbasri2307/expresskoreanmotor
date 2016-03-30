@@ -23,6 +23,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('contact-post',['uses'=>'FrontController@contact_post','as'=>'contact.post']);
 	Route::post('product-post',['uses'=>'FrontController@product_post','as'=>'product.post']);
 	Route::get('product-search',['uses'=>'FrontController@product_search','as'=>'product.search']);
+    Route::get('testimonial',['uses'=>'FrontController@testimonial','as'=>'front.testimonial']);
+    Route::post('testimonial-post',['uses'=>'FrontController@testimonial_post','as'=>'testimonial.post']);
 	Route::get('products/category/{id}/{cat_name}',['uses'=>'FrontController@product_by_category','as'=>'front.product.category']);
 
     Route::get('login',['uses'=>'AuthenticateController@login','middleware'=>'guest']);
@@ -74,6 +76,11 @@ Route::group(['middleware' => ['web']], function () {
 
 		//Contact
 		Route::get('contact/list',['uses'=>'Contact@index','as'=>'contact.list']);
+
+        //Testimonial
+        Route::get('testimonial/list',['uses'=>'TestimonialController@index','as'=>'testimonial.list']);
+        Route::get('testimonial/update/{id}/{status}',['uses'=>'TestimonialController@update','as'=>'testimonial.update']);
+
     });
 });
 

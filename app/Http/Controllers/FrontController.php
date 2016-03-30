@@ -10,6 +10,7 @@ use App\Product;
 use Illuminate\Support\Facades\DB;
 use App\Contactus;
 use App\Order;
+use App\Testimonial;
 use Session;
 
 class FrontController extends Controller
@@ -23,6 +24,7 @@ class FrontController extends Controller
 		self::$_data['best_seller'] = $this->bestSeller();
 		self::$_data['new_product'] = $this->getNewProduct();
 		self::$_data['category'] = $this->getCategory();
+		self::$_data['testimonial'] = Testimonial::where(['status'=>1])->orderBy('created_at','desc')->take(3)->get();
 		return view("frontend.home",self::$_data);
 	}
 
@@ -121,6 +123,26 @@ class FrontController extends Controller
 
 		Session::flash("success","Your order has been sent and will be proccess with admin, thanks.");
 		return redirect()->back();
+	}
+
+	public function testimonial(){
+		self::$_data['category'] = $this->getCategory();
+		self::$_data['title'] = "Testimonial - Express Korean Motor";
+		return view("frontend.testimonial",self::$_data);
+	}
+
+	public function testimonial_post(Request $req){
+		$testimonial = new Testimonial();
+		$testimonial->nama = $req->input('nama');
+		$testimonial->email = $req->input('email');
+		$testimonial->telepon = $req->input('telepon');
+		$testimonial->perusahaan = $req->input('perusahaan');
+		$testimonial->isi = $req->input('isi');
+		$testimonial->status = 0;
+		$testimonial->save();
+
+		Session::flash("success","Your testimonial has been sent, thanks.");
+		return redirect()->route('front.testimonial');
 	}
 
 	private function getCategory(){

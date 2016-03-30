@@ -111,6 +111,9 @@
                     <li>
                         <a href="{{ route('contact.list') }}" @if(isset($explode[1])) @if($explode[1] == "contact") class="active" @endif @endif><i class="fa fa-desktop fa-fw"></i> Contact</a>
                     </li>
+                    <li>
+                        <a href="{{ route('testimonial.list') }}" @if(isset($explode[1])) @if($explode[1] == "testimonial") class="active" @endif @endif><i class="fa fa-reply fa-fw"></i> Testimonial</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
